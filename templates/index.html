@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>STASHUP</title>
+
+<style>
+
+/* DEFAULT STYLE KO RESET KRRHA HU*/
+
+.default{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #111827;
+}
+/* SIDEBAR BNA RHA HUN */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+
+    background: #111827;
+    color: white;
+
+    padding: 28px 18px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* LOGO */
+
+    .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 45px;
+
+}
+.logo-icon {
+    width: 43px;
+    height: 43px;
+
+    background: #6366f1;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+    font-weight: bold;
+}
+.logo h2 {
+    font-size: 20px;
+}
+
+.logo small {
+    color: #94a3b8;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+/* NAVIGATION*/
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-btn {
+    border: none;
+    background: transparent;
+
+    color: #94a3b8;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: #1f2937;
+    color: white;
+}
+
+/* SYSTEM STATUS */
+
+.system-status {
+    margin-top: auto;
+
+    background: #1f2937;
+
+    border-radius: 12px;
+
+    padding: 15px;
+}
+
+/*ONLINE*/
+
+.online {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    font-size: 12px;
+}
+
+/* GREEN DOT */
+
+.green-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+}
+
+.system-status small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #94a3b8;
+}
+
+/* MAIN */
+
+main {
+    margin-left: 240px;
+
+    padding: 30px 40px;
+
+    max-width: 1700px;
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    font-size: 30px;
+}
+
+.header p {
+    color: #64748b;
+
+    font-size: 14px;
+
+    margin-top: 5px;
+}
+
+/* PROFILE AND AVATAR - INITIALS JO AAYENGE LIKE SA IN A SMALL BOX*/
+
+.profile {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #6366f1;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+.profile small {
+    display: block;
+
+    color: #64748b;
+
+    margin-top: 3px;
+}
+
+/* ========== MAIN PROFILE BNA RHA HUN ========== */
+
+.profile-box {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.label {
+    font-size: 10px;
+
+    color: #6366f1;
+
+    font-weight: bold;
+
+    letter-spacing: 1.4px;
+}
+
+.profile-box h2 {
+    margin-top: 5px;
+
+    font-size: 19px;
+}
+
+.risk-buttons {
+    background: #f1f5f9;
+
+    padding: 5px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    gap: 5px;
+}
+
+.risk-btn {
+    border: none;
+
+    background: transparent;
+
+    padding: 9px 15px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    color: #64748b;
+}
+
+.risk-btn.active {
+    background: white;
+
+    color: #111827;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+/* SEARCH SPACE */
+
+search {
+    display: flex;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 13px;
+
+    padding: 6px;
+
+    margin-bottom: 20px;
+}
+
+.search input {
+    flex: 1;
+
+    border: none;
+
+    outline: none;
+
+    padding: 13px;
+
+    font-size: 14px;
+}
+
+.search button {
+    background: #111827;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 22px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.search button:hover {
+    background: #374151;
+}
+
+/* JO MARKET SPACE HOGI */
+
+.market-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.metric {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 15px;
+
+    padding: 20px;
+}
+
+.metric h2 {
+    margin: 9px 0;
+
+    font-size: 24px;
+}
+
+.green {
+    color: #059669;
+}
+
+.orange {
+    color: #d97706;
+}
+
+.sub {
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+.rsi-bar {
+    height: 5px;
+
+    background: #e5e7eb;
+
+    border-radius: 10px;
+
+    margin-top: 10px;
+
+    overflow: hidden;
+}
+
+.rsi-fill {
+    width: 63%;
+
+    height: 100%;
+
+    background: #6366f1;
+}
+
+/* CARDS */
+
+.grid-two {
+    display: grid;
+
+    grid-template-columns: 1.4fr 1fr;
+
+    gap: 18px;
+
+    margin-bottom: 35px;
+}
+
+.card {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 17px;
+
+    padding: 23px;
+}
+
+.card-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+}
+
+.card h2 {
+    margin-top: 5px;
+
+    font-size: 19px;
+}
+
+/* LIVE SPACE*/
+
+.live {
+    color: #059669;
+
+    background: #ecfdf5;
+
+    padding: 6px 9px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: bold;
+}
+
+.signal-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    margin-top: 30px;
+}
+
+.signal-circle {
+    width: 125px;
+    height: 125px;
+
+    border-radius: 50%;
+
+    border: 9px solid #d1fae5;
+
+    outline: 2px solid #10b981;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.signal-circle strong {
+    font-size: 27px;
+
+    color: #047857;
+}
+
+.signal-circle span {
+    color: #64748b;
+
+    font-size: 10px;
+}
+
+.signal-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.signal-title h1 {
+    color: #059669;
+
+    font-size: 29px;
+}
+
+.signal-dot {
+    width: 11px;
+    height: 11px;
+
+    background: #10b981;
+
+    border-radius: 50%;
+}
+
+.signal-description {
+    color: #64748b;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin-top: 10px;
+}
+
+/* PORTFOLIO CARD */
+
+.portfolio-value {
+    margin: 22px 0;
+}
+
+.portfolio-value span {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.portfolio-value h1 {
+    margin: 5px 0;
+
+    font-size: 28px;
+}
+
+.portfolio-bar {
+    display: flex;
+
+    height: 9px;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin-bottom: 15px;
+}
+
+.tcs {
+    width: 30%;
+    background: #6366f1;
+}
+
+.hdfc {
+    width: 25%;
+    background: #8b5cf6;
+}
+
+.reliance {
+    width: 15%;
+    background: #f59e0b;
+}
+
+.infy {
+    width: 20%;
+    background: #10b981;
+}
+
+.cash {
+    width: 10%;
+    background: #cbd5e1;
+}
+
+.portfolio-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 7px 0;
+
+    font-size: 12px;
+}
+
+/* AGENTS CARD */
+
+.section-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    margin-top: 5px;
+}
+
+.parallel {
+    background: #eef2ff;
+
+    color: #6366f1;
+
+    padding: 8px 12px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+}
+
+.agents {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.agent {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    padding: 20px;
+}
+
+.agent-icon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    font-weight: bold;
+}
+
+.tech-icon {
+    background: #eef2ff;
+    color: #6366f1;
+}
+
+.fund-icon {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.sent-icon {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+.agent-head {
+    display: flex;
+justify-content: space-between;
+}
+
+.agent-head h3 {
+    font-size: 15px;
+}
+
+.agent-head span {
+    color: #94a3b8;
+
+    font-size: 10px;
+}
+
+.ready {
+    background: #ecfdf5;
+
+    color: #059669 !important;
+
+    padding: 5px;
+
+    border-radius: 5px;
+
+    height: fit-content;
+}
+
+.agent-result {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 20px 0 10px;
+
+    font-size: 12px;
+}
+
+.agent p {
+    color: #64748b;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+/* BOTTOM PART */
+
+ottom {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+.reason {
+    display: flex;
+
+    gap: 12px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.check {
+    width: 22px;
+    height: 22px;
+
+    border-radius: 50%;
+
+    background: #ecfdf5;
+
+    color: #059669;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 11px;
+}
+
+.reason strong {
+    font-size: 13px;
+}
+
+.reason p {
+    color: #64748b;
+
+    font-size: 11px;
+
+    margin-top: 3px;
+}
+
+/* SOURCES*/
+
+.source {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.source-icon {
+    width: 40px;
+    height: 40px;
+
+    background: #eef2ff;
+
+    color: #6366f1;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 9px;
+
+    font-weight: bold;
+}
+
+.source strong {
+    font-size: 13px;
+}
+
+.source p {
+    color: #64748b;
+
+    font-size: 11px;
+
+    margin: 3px 0;
+}
+
+.source small {
+    color: #6366f1;
+
+    font-size: 9px;
+}
+
+/* RISK CARD*/
+.risk{
+
+    background: #fffaf0;
+
+    border: 1px solid #fed7aa;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.warning-icon {
+    width: 40px;
+    height: 40px;
+
+    background: #ffedd5;
+
+    color: #ea580c;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+.risk h2 {
+    font-size: 16px;
+
+    margin: 4px 0;
+}
+
+.risk p {
+    color: #78716c;
+
+    font-size: 11px;
+}
+
+.risk-score {
+    margin-left: auto;
+
+    text-align: right;
+}
+
+.risk-score span {
+    display: block;
+
+    color: #78716c;
+
+    font-size: 10px;
+}
+
+.risk-score strong {
+    font-size: 28px;
+
+    color: #ea580c;
+}
+
+/* FOOTER */
+
+footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+
+    padding: 15px 0;
+}
+
+/* RESPONSIVE PAGE */
+
+@media(max-width: 1100px) {
+
+    .market-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-two,
+    .bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .agents {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width: 700px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        margin-left: 0;
+
+        padding: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .profile-box {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .market-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .signal-area {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    footer {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!--HTML CODE STARTS-->
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            F
+        </div>
+
+        <div>
+            <h2>STASHUP</h2>
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <button class="nav-btn active">
+            🏠 Dashboard
+        </button>
+
+        <button class="nav-btn">
+            📊 Market
+        </button>
+
+        <button class="nav-btn">
+            💼 Portfolio
+        </button>
+
+        <button class="nav-btn">
+            🤖 AI Insights
+        </button>
+
+        <button class="nav-btn">
+            ⚙️ Settings
+        </button>
+
+    </nav>
+
+
+    <div class="system-status">
+
+        <div class="online">
+
+            <span class="green-dot"></span>
+
+            <strong>System Online</strong>
+
+        </div>
+
+        <small>
+            All AI agents operational
+        </small>
+
+    </div>
+
+</aside>
+
+
+
+<!--MAIN CONTENT-->
+
+<main class="main">
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div>
+
+        <h1>Investment Intelligence</h1>
+
+        <p>
+            AI-powered market analysis personalized for you.
+        </p>
+
+    </div>
+
+
+    <div class="profile">
+
+        <div class="avatar">
+            SA
+        </div>
+
+        <div>
+
+            <strong>Investor</strong>
+
+            <small id="riskDisplay">
+                Moderate Risk
+            </small>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- PROFILE -->
+
+<section class="profile-box">
+
+    <div>
+
+        <span class="label">
+            YOUR INVESTOR PROFILE
+        </span>
+
+        <h2>
+            Personalized Analysis
+        </h2>
+
+    </div>
+
+
+    <div class="risk-buttons">
+
+        <button
+            class="risk-btn"
+            data-risk="Conservative">
+
+            Conservative
+
+        </button>
+
+
+        <button
+            class="risk-btn active"
+            data-risk="Moderate">
+
+            Moderate
+
+        </button>
+
+
+        <button
+            class="risk-btn"
+            data-risk="Aggressive">
+
+            Aggressive
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- SEARCH -->
+
+<div class="search">
+
+    <input
+        type="text"
+        id="stockInput"
+        placeholder="Search stock e.g. RELIANCE, TCS, INFY..."
+    >
+
+    <button id="analyzeBtn">
+        Analyze →
+    </button>
+
+</div>
+
+
+
+<!-- MARKET DATA -->
+
+<section class="market-grid">
+
+
+    <div class="metric">
+
+        <span class="label">
+            CURRENT PRICE
+        </span>
+
+        <h2 id="price">
+            ₹1,452.35
+        </h2>
+
+        <span class="green" id="change">
+            +2.41%
+        </span>
+
+    </div>
+
+
+    <div class="metric">
+
+        <span class="label">
+            VOLUME
+        </span>
+
+        <h2 id="volume">
+            14.2L
+        </h2>
+
+        <span class="sub">
+            1.42× average
+        </span>
+
+    </div>
+
+
+    <div class="metric">
+
+        <span class="label">
+            RSI
+        </span>
+
+        <h2 id="rsi">
+            63
+        </h2>
+
+        <div class="rsi-bar">
+
+            <div
+                class="rsi-fill"
+                id="rsiFill">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="metric">
+
+        <span class="label">
+            MARKET SENTIMENT
+        </span>
+
+        <h2 class="green" id="sentiment">
+            Positive
+        </h2>
+
+        <span class="sub">
+            Based on recent signals
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- SIGNAL + PORTFOLIO -->
+
+<section class="grid-two">
+
+
+    <!-- SIGNAL -->
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="label">
+                    AI SYNTHESIS
+                </span>
+
+                <h2>
+                    Overall Signal
+                </h2>
+
+            </div>
+
+            <span class="live">
+                ● LIVE
+            </span>
+
+        </div>
+
+
+        <div class="signal-area">
+
+            <div class="signal-circle">
+
+                <strong>
+                    78%
+                </strong>
+
+                <span>
+                    Confidence
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <div class="signal-title">
+
+                    <span class="signal-dot"></span>
+
+                    <h1 id="signal">
+                        BULLISH
+                    </h1>
+
+                </div>
+
+
+                <p
+                    class="signal-description"
+                    id="recommendation">
+
+                    Positive setup detected based on
+                    multiple independent signals.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PORTFOLIO -->
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="label">
+                    YOUR MONEY
+                </span>
+
+                <h2>
+                    Portfolio
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="portfolio-value">
+
+            <span>
+                Total Value
+            </span>
+
+            <h1>
+                ₹50,000
+            </h1>
+
+            <span class="green">
+                +₹2,840 today
+            </span>
+
+        </div>
+
+
+        <div class="portfolio-bar">
+
+            <div class="tcs"></div>
+
+            <div class="hdfc"></div>
+
+            <div class="reliance"></div>
+
+            <div class="infy"></div>
+
+            <div class="cash"></div>
+
+        </div>
+
+
+        <div class="portfolio-row">
+            <span>TCS</span>
+            <strong>30%</strong>
+        </div>
+
+        <div class="portfolio-row">
+            <span>HDFC Bank</span>
+            <strong>25%</strong>
+        </div>
+
+        <div class="portfolio-row">
+            <span>Reliance</span>
+            <strong>15%</strong>
+        </div>
+
+        <div class="portfolio-row">
+            <span>Infosys</span>
+            <strong>20%</strong>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- AI AGENTS -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="label">
+                MULTI-AGENT REASONING
+            </span>
+
+            <h2>
+                Independent AI Analysts
+            </h2>
+
+        </div>
+
+        <span class="parallel">
+            ⚡ Running in parallel
+        </span>
+
+    </div>
+
+
+
+    <div class="agents">
+
+
+        <!-- TECHNICAL -->
+
+        <div class="agent">
+
+            <div class="agent-icon tech-icon">
+                ↗
+            </div>
+
+            <div class="agent-head">
+
+                <div>
+
+                    <h3>
+                        Technical Agent
+                    </h3>
+
+                    <span>
+                        Price & Momentum
+                    </span>
+
+                </div>
+
+                <span class="ready">
+                    READY
+                </span>
+
+            </div>
+
+
+            <div class="agent-result">
+
+                <span>
+                    Signal
+                </span>
+
+                <strong class="green">
+                    BULLISH
+                </strong>
+
+            </div>
+
+
+            <p>
+
+                Price is trading above its short-term
+                moving average with positive momentum.
+
+            </p>
+
+        </div>
+
+        <!-- FUNDAMENTAL -->
+
+        <div class="agent">
+
+            <div class="agent-icon fund-icon">
+                ◫
+            </div>
+
+            <div class="agent-head">
+
+                <div>
+
+                    <h3>
+                        Fundamental Agent
+                    </h3>
+
+                    <span>
+                        Financial Health
+                    </span>
+
+                </div>
+
+                <span class="ready">
+                    READY
+                </span>
+
+            </div>
+
+
+            <div class="agent-result">
+
+                <span>
+                    Signal
+                </span>
+
+                <strong class="green">
+                    POSITIVE
+                </strong>
+
+            </div>
+
+
+            <p>
+
+                Financial disclosures indicate
+                stable business performance.
+
+            </p>
+
+        </div>
+
+<!-- SENTIMENT -->
+
+        <div class="agent">
+
+            <div class="agent-icon sent-icon">
+                ◉
+            </div>
+
+            <div class="agent-head">
+
+                <div>
+
+                    <h3>
+                        Sentiment Agent
+                    </h3>
+
+                    <span>
+                        News & Behaviour
+                    </span>
+
+                </div>
+
+                <span class="ready">
+                    READY
+                </span>
+
+            </div>
+
+
+            <div class="agent-result">
+
+                <span>
+                    Signal
+                </span>
+
+                <strong class="green">
+                    POSITIVE
+                </strong>
+
+            </div>
+
+
+            <p>
+
+                Recent market sentiment indicates
+                positive investor perception.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+<!-- REASONING + SOURCES -->
+
+<section class="bottom">
+
+
+    <!-- REASONING -->
+
+    <div class="card">
+
+        <div>
+
+            <span class="label">
+                EXPLAINABILITY
+            </span>
+
+            <h2>
+                Why this signal?
+            </h2>
+
+        </div>
+
+
+        <div style="margin-top:20px;">
+
+
+            <div class="reason">
+
+                <span class="check">
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        Strong price momentum
+                    </strong>
+
+                    <p>
+                        Price trend remains positive.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="reason">
+
+                <span class="check">
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        Volume anomaly detected
+                    </strong>
+
+                    <p>
+                        Trading volume is above average.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="reason">
+
+                <span class="check">
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        Positive fundamental outlook
+                    </strong>
+
+                    <p>
+                        Latest financial information
+                        supports the current view.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="reason">
+
+                <span class="check">
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        Personalized to your risk
+                    </strong>
+
+                    <p id="personalizedText">
+                        Analysis adjusted for moderate risk.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- SOURCES -->
+
+    <div class="card">
+
+        <div>
+
+            <span class="label">
+                RAG EVIDENCE
+            </span>
+
+            <h2>
+                Sources & Citations
+            </h2>
+
+        </div>
+
+
+        <div class="source">
+
+            <div class="source-icon">
+                PDF
+            </div>
+
+            <div>
+
+                <strong>
+                    Financial Filing
+                </strong>
+
+                <p>
+                    Quarterly company disclosure
+                </p>
+
+                <small>
+                    Retrieved by RAG
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="source">
+
+            <div class="source-icon">
+                MKT
+            </div>
+
+            <div>
+
+                <strong>
+                    Market Data
+                </strong>
+
+                <p>
+                    Price, volume & indicators
+                </p>
+
+                <small>
+                    Market data source
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="source">
+
+            <div class="source-icon">
+                AI
+            </div>
+
+            <div>
+
+                <strong>
+                    Agent Reasoning
+                </strong>
+
+                <p>
+                    3 independent AI analyses
+                </p>
+
+                <small>
+                    Synthesized output
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- RISK -->
+
+<section class="risk">
+
+    <div class="warning-icon">
+        !
+    </div>
+
+    <div>
+
+        <span class="label">
+            PORTFOLIO RISK
+        </span>
+
+        <h2>
+            Moderate Concentration Risk
+        </h2>
+
+        <p>
+            Your portfolio has relatively high exposure
+            to technology-related holdings.
+        </p>
+
+    </div>
+
+
+    <div class="risk-score">
+
+        <span>
+            Risk Score
+        </span>
+
+        <strong>
+            42
+        </strong>
+
+        <span>
+            / 100
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        <strong>FinSight AI</strong>
+        — Multi-Agent Investment Intelligence
+    </div>
+
+    <div>
+        Prototype • Not Financial Advice
+    </div>
+
+</footer>
+
+
+</main>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+// ============================================
+// DEMO STOCK DATABASE
+// ============================================
+
+const stocks = {
+
+    RELIANCE: {
+        price: "₹1,452.35",
+        change: "+2.41%",
+        volume: "14.2L",
+        rsi: 63,
+        sentiment: "Positive",
+        signal: "BULLISH"
+    },
+
+    TCS: {
+        price: "₹3,420.20",
+        change: "+1.32%",
+        volume: "13.1L",
+        rsi: 59,
+        sentiment: "Neutral",
+        signal: "BULLISH"
+    },
+
+    INFY: {
+        price: "₹1,625.40",
+        change: "+0.74%",
+        volume: "12.2L",
+        rsi: 56,
+        sentiment: "Positive",
+        signal: "BULLISH"
+    },
+
+    HDFC: {
+        price: "₹1,785.70",
+        change: "-0.82%",
+        volume: "9.1L",
+        rsi: 44,
+        sentiment: "Neutral",
+        signal: "HOLD"
+    }
+
+};
+
+
+// ============================================
+// GET HTML ELEMENTS
+// ============================================
+
+const stockInput =
+    document.getElementById("stockInput");
+
+const analyzeBtn =
+    document.getElementById("analyzeBtn");
+
+const price =
+    document.getElementById("price");
+
+const change =
+    document.getElementById("change");
+
+const volume =
+    document.getElementById("volume");
+
+const rsi =
+    document.getElementById("rsi");
+
+const rsiFill =
+    document.getElementById("rsiFill");
+
+const sentiment =
+    document.getElementById("sentiment");
+
+const signal =
+    document.getElementById("signal");
+
+const recommendation =
+    document.getElementById("recommendation");
+
+
+// ============================================
+// STOCK ANALYSIS
+// ============================================
+
+analyzeBtn.addEventListener("click", function() {
+
+
+    let name =
+        stockInput.value
+        .trim()
+        .toUpperCase();
+
+
+    if (name === "") {
+
+        alert("Please enter a stock name.");
+
+        return;
+
+    }
+
+
+    // Allow common names
+
+    if (name.includes("RELIANCE"))
+        name = "RELIANCE";
+
+    else if (name.includes("TCS"))
+        name = "TCS";
+
+    else if (name.includes("INFY"))
+        name = "INFY";
+
+    else if (name.includes("HDFC"))
+        name = "HDFC";
+
+
+    if (!stocks[name]) {
+
+        alert(
+            "Demo stocks: RELIANCE, TCS, INFY, HDFC"
+        );
+
+        return;
+
+    }
+
+
+    const data = stocks[name];
+
+
+    // Loading effect
+
+    analyzeBtn.innerText =
+        "Analyzing...";
+
+    analyzeBtn.disabled = true;
+
+
+    setTimeout(function() {
+
+
+        // Update data
+
+        price.innerText =
+            data.price;
+
+        change.innerText =
+            data.change;
+
+        volume.innerText =
+            data.volume;
+
+        rsi.innerText =
+            data.rsi;
+
+        rsiFill.style.width =
+            data.rsi + "%";
+
+        sentiment.innerText =
+            data.sentiment;
+
+        signal.innerText =
+            data.signal;
+
+
+        // Signal styling
+
+        if (data.signal === "BULLISH") {
+
+            signal.style.color =
+                "#059669";
+
+            recommendation.innerText =
+                "Positive setup detected based on multiple independent signals.";
+
+        }
+
+        else {
+
+            signal.style.color =
+                "#d97706";
+
+            recommendation.innerText =
+                "Signals are mixed. Monitoring the stock may be preferable.";
+
+        }
+
+
+        analyzeBtn.innerText =
+            "Analyze →";
+
+        analyzeBtn.disabled =
+            false;
+
+
+    }, 800);
+
+});
+
+
+// ============================================
+// ENTER KEY SEARCH
+// ============================================
+
+stockInput.addEventListener(
+    "keypress",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            analyzeBtn.click();
+
+        }
+
+    }
+);
+
+
+// ============================================
+// RISK PROFILE
+// ============================================
+
+const riskButtons =
+    document.querySelectorAll(".risk-btn");
+
+const riskDisplay =
+    document.getElementById("riskDisplay");
+
+const personalizedText =
+    document.getElementById("personalizedText");
+
+
+riskButtons.forEach(function(button) {
+
+
+    button.addEventListener(
+        "click",
+        function() {
+
+
+            // Remove active
+
+            riskButtons.forEach(
+                btn => btn.classList.remove("active")
+            );
+
+
+            // Add active
+
+            this.classList.add("active");
+
+
+            const risk =
+                this.dataset.risk;
+
+
+            riskDisplay.innerText =
+                risk + " Risk";
+
+
+            // Personalized output
+
+            if (risk === "Conservative") {
+
+                personalizedText.innerText =
+                    "Analysis adjusted for lower risk tolerance. Capital preservation is prioritized.";
+
+                recommendation.innerText =
+                    "For your conservative profile, risk control is prioritized over aggressive opportunities.";
+
+            }
+
+
+            else if (risk === "Moderate") {
+
+                personalizedText.innerText =
+                    "Analysis adjusted for moderate risk tolerance.";
+
+                recommendation.innerText =
+                    "Positive setup detected while keeping portfolio risk in consideration.";
+
+            }
+
+
+            else {
+
+                personalizedText.innerText =
+                    "Analysis adjusted for higher risk tolerance and greater volatility acceptance.";
+
+                recommendation.innerText =
+                    "Your aggressive profile allows greater tolerance for short-term volatility.";
+
+            }
+
+        }
+    );
+
+});
+
+
+// ============================================
+// NAVIGATION
+// ============================================
+
+const navButtons =
+    document.querySelectorAll(".nav-btn");
+
+
+navButtons.forEach(function(button) {
+
+
+    button.addEventListener(
+        "click",
+        function() {
+
+
+            navButtons.forEach(
+                btn => btn.classList.remove("active")
+            );
+
+
+            this.classList.add("active");
+
+        }
+    );
+
+});
+
+
+console.log(
+    "FinSight AI Frontend Loaded Successfully"
+);
+
+console.log(
+    "Ready for backend API integration"
+);
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
